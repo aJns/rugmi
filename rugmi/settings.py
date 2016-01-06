@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'images.apps.ImagesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -74,10 +75,16 @@ WSGI_APPLICATION = 'rugmi.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
+# Debug settings! Change for production
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'rugmiDatabase',
+        'USER': 'nikulaj',
+        'PASSWORD': '',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
 
