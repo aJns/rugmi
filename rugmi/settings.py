@@ -130,5 +130,5 @@ STATIC_URL = '/static/'
 
 # Media files
 
-MEDIA_URL = '/images/'
+MEDIA_URL = '/img/'
 MEDIA_ROOT = './test_images/'        # Development directory, change for production!
