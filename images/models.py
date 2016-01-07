@@ -15,3 +15,6 @@ class Comment(models.Model):
     submission = models.ForeignKey(Submission, on_delete=models.CASCADE)
     comment_text = models.CharField(max_length=500)
     pub_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return ('\"' + self.comment_text[:12] + '...\"')

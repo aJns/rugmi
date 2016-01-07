@@ -1,8 +1,7 @@
 {% if latest_submissions %}
     <ul>
     {% for submission in latest_submissions %}
-        <li><img src="{{ submission.content.url }}/"></a></li>
-        <!-- <li><a href="/images/{{ submission.id }}/">{{ submission.title }}</a></li> -->
+    <li><a href="/images/{{ submission.id }}/"><img src="{{ submission.content.url }}/"></a></li>
     {% endfor %}
     </ul>
 {% else %}
