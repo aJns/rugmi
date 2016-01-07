@@ -1,5 +1,5 @@
 <h1>{{ submission }}</h1>
-<img src="{{ submission.content.url }}">
+<img src="{{ submission.content.url }}" style="width:100%;height:auto;">
 
 <ul>
 {% for comment in submission.comment_set.all %}
