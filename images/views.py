@@ -1,8 +1,8 @@
-from django.http import HttpResponse
-# from django.template import loader
 from django.shortcuts import render, get_object_or_404
+from django.http import HttpResponse, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 
-from .models import Submission
+from .models import Submission, Comment
 
 
 def index(request):
@@ -19,4 +19,12 @@ def detail(request, submission_id):
     return render(request, 'images/detail.html', {'submission': submission})
 
 def comment(request, submission_id):
-    return HttpResponse("This the comment submission page for submission %s." % submission_id)
+    submission = get_object_or_404(Submission, pk=submission_id)
+    try:
+        comment_text = request.POST['comment']
+    except (KeyError):
+        return render(request, 'images/detail.html', {'submission': submission})
+    else:
+        comment = Comment(submission=submission, comment_text=comment_text)
+        comment.save()
+        return HttpResponseRedirect(reverse('images:detail', args=(submission.id,)))
