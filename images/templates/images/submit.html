@@ -1,0 +1,9 @@
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+<label>Submit your image</label>
+<form enctype="multipart/form-data" action="{% url 'images:submit' %}" method="post">
+{% csrf_token %}
+{{ form }}
+<br>
+<input type="submit" value="Submit">
+</form> 

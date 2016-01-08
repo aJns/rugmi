@@ -3,7 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from .models import Submission, Comment
-from .forms import CommentForm
+from .forms import SubmissionForm, CommentForm
 
 
 def index(request):
@@ -13,7 +13,19 @@ def index(request):
     return render(request, 'images/index.html', context)
 
 def submit(request):
-    return HttpResponse("Hello. You're at the images submit page.")
+    if request.method == 'POST':
+        form = SubmissionForm(request.POST, request.FILES)
+        if form.is_valid():
+            submission = Submission(title=form.cleaned_data['title'],
+                                    description=form.cleaned_data['description'],
+                                    content=form.cleaned_data['image'])
+            submission.save()
+            return HttpResponseRedirect(reverse('images:detail', args=(submission.id,)))
+        else:
+            print("Form isn't valid")
+    else:
+        form = SubmissionForm()
+    return render(request, 'images/submit.html', {'form': form})
 
 def detail(request, submission_id):
     submission = get_object_or_404(Submission, pk=submission_id)
