@@ -3,6 +3,7 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django.core.urlresolvers import reverse
 
 from .models import Submission, Comment
+from .forms import CommentForm
 
 
 def index(request):
@@ -16,15 +17,17 @@ def submit(request):
 
 def detail(request, submission_id):
     submission = get_object_or_404(Submission, pk=submission_id)
-    return render(request, 'images/detail.html', {'submission': submission})
+    form = CommentForm()
+    return render(request, 'images/detail.html', {'submission': submission, 'form': form})
 
 def comment(request, submission_id):
-    submission = get_object_or_404(Submission, pk=submission_id)
+    current_submission = get_object_or_404(Submission, pk=submission_id)
     try:
-        comment_text = request.POST['comment']
+        form = CommentForm(request.POST)
     except (KeyError):
         return render(request, 'images/detail.html', {'submission': submission})
     else:
-        comment = Comment(submission=submission, comment_text=comment_text)
-        comment.save()
-        return HttpResponseRedirect(reverse('images:detail', args=(submission.id,)))
+        if form.is_valid():
+            comment = Comment(submission=current_submission, comment_text=form.cleaned_data['comment_text'])
+            comment.save()
+        return HttpResponseRedirect(reverse('images:detail', args=(submission_id,)))

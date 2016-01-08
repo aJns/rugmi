@@ -2,7 +2,7 @@
     {% for submission in latest_submissions %}
     <div style="padding:5px;">
         <a href="{% url 'images:detail' submission.id %}">
-            <img src="{{ submission.content.url }}/" style="width:100%;height:auto;"></a>
+            <img src="{{ submission.content.url }}/" style="width:500;height:auto;"></a>
     </div>
     {% endfor %}
 {% else %}
