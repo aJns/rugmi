@@ -24,4 +24,4 @@ $ cd rugmi
 $ python manage.py runserver
 ```
 
-Then you can access rugmi at [](localhost:8000/images)
+Then you can access rugmi at [localhost:8000/images](localhost:8000/images)
