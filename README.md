@@ -13,6 +13,9 @@ that when deploying to a production environment you should consult django's
 deployment docs.
 
 Remember that Django and Pillow have to be installed!
+```bash
+# pip install Django Pillow 
+```
 
 ```bash
 $ git clone https://github.com/aJns/rugmi.git
@@ -21,4 +24,4 @@ $ cd rugmi
 $ python manage.py runserver
 ```
 
-Then you can access rugmi at localhost:8000/images
+Then you can access rugmi at [localhost:8000/images]
