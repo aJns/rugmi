@@ -1,16 +1,10 @@
-<style>
-    div.fieldWrapper {
-        padding-bottom:20px;
-    }
-</style>
+{% extends "images/base.html" %}
 
-<a href="{% url 'images:index' %}">Front page</a>
-<br><br>
+{% block content %}
 
 {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<label>Submit your image</label>
-<br><br>
+<h2>Submit your image</h2>
 <form enctype="multipart/form-data" action="{% url 'images:submit' %}" method="post">
     {% csrf_token %}
 
@@ -30,3 +24,5 @@
     <br>
     <input type="submit" value="Submit">
 </form> 
+
+{% endblock %}

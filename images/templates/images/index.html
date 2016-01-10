@@ -1,12 +1,15 @@
-<a href="{% url 'images:submit' %}">Submit an image</a>
+{% extends "images/base.html" %}
 
+{% block content %}
 {% if latest_submissions %}
-    {% for submission in latest_submissions %}
-    <div style="padding:5px;">
-        <a href="{% url 'images:detail' submission.id %}">
-            <img src="{{ submission.content.url }}/" style="width:500;height:auto;"></a>
-    </div>
-    {% endfor %}
+{% for submission in latest_submissions %}
+<div class="image_container">
+<a href="{% url 'images:detail' submission.id %}">
+    <img src="{{ submission.content.url }}/">
+</a>
+</div>
+{% endfor %}
 {% else %}
-    <p>No submissions are available.</p>
+<p>No submissions are available.</p>
 {% endif %}
+{% endblock %}

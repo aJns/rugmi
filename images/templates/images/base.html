@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load staticfiles %}
+<head>
+    <link rel="stylesheet" type="text/css" href="{% static 'images/style.css' %}" />
+    <title>{% block title %}rugmi{% endblock %}</title>
+</head>
+
+<body>
+    <div class="banner">
+    </div>
+
+    <div class="sidebar">
+        {% block sidebar %}
+        <a href="{% url 'images:index' %}">Front page</a>
+        <br><br>
+        <a href="{% url 'images:submit' %}">Submit an image</a>
+        {% endblock %}
+    </div>
+
+    <div class="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>

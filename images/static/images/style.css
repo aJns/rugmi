@@ -1,0 +1,48 @@
+div.content {
+    float:left;
+    margin-left:auto;
+    margin-right:auto;
+    width:800px;
+    background:grey;
+    padding:10px;
+}
+
+div.image_container {
+    margin-left:auto;
+    margin-right:auto;
+    max-width:750px;
+    max-height:100%;
+    padding:10px;
+    background:#1C1C1C;
+    margin-bottom:10px;
+}
+
+div.sidebar {
+    float:left;
+    margin-right:10px;
+    padding:5px;
+    padding-bottom:50px;
+    background:#424242;
+}
+
+div.fieldWrapper {
+    padding-bottom:20px;
+}
+
+a {
+    color:#A4A4A4;
+}
+
+body {
+    background:#1C1C1C;
+}
+
+img {
+    /* margin-left:auto; */
+    /* margin-right:auto; */
+    /* max-width:750px; */
+    max-width:100%;
+    max-height:100%;
+    /* width:100%; */
+    /* padding:5px; */
+}
